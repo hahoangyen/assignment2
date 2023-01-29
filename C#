@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Declare and initialize constants for the percentages of each component of the course
+        const float ASSIGNMENTS_PERCENTAGE = 0.2f;
+        const float MIDTERM_EXAM_PERCENTAGE = 0.3f;
+        const float QUIZZES_PERCENTAGE = 0.2f;
+        const float FINAL_EXAM_PERCENTAGE = 0.3f;
+
+        // Declare and initialize variables for the student's grades
+        float assignments = 89.5f;
+        float midtermExam = 70.5f;
+        float quiz1 = 80f;
+        float quiz2 = 85.5f;
+        float finalExam = 75f;
+
+        // Calculate the total weighted average
+        float totalWeightedAverage = (assignments * ASSIGNMENTS_PERCENTAGE) + (midtermExam * MIDTERM_EXAM_PERCENTAGE) + (quiz1 * QUIZZES_PERCENTAGE) + (quiz2 * QUIZZES_PERCENTAGE) + (finalExam * FINAL_EXAM_PERCENTAGE);
+        // Calculate the WAT-on-Exams
+        float watOnExams = (midtermExam * MIDTERM_EXAM_PERCENTAGE) + (finalExam * FINAL_EXAM_PERCENTAGE);
+
+        // Display the results in a formatted table
+        Console.Write("\\***************************************\\\n");
+        Console.Write("\\\t\t\t\t\t\t\t\t\t\t\\\n");
+        Console.Write("\\\t\"Total Weighted Average Calculator\"\t\\\n");
+        Console.Write("\\\t\t\t\t\t\t\t\t\t\t\\\n");
+        Console.Write("\\***************************************\\\n\n");
+        Console.Write("\tAssessment\tPercentage\tYourGrade\n");
+        Console.Write("--------------\t----------\t---------\n");
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Assignments", ASSIGNMENTS_PERCENTAGE, assignments);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Midterm Exam", MIDTERM_EXAM_PERCENTAGE, midtermExam);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Quiz1", QUIZZES_PERCENTAGE/2, quiz1);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Quiz2", QUIZZES_PERCENTAGE/2, quiz2);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Final Exam", FINAL_EXAM_PERCENTAGE, finalExam);
+        Console.WriteLine("{0,14}{1,13} {2,-15:F2}", "Total", " ", totalWeightedAverage);
+        Console.WriteLine("{0,14}{1,13} {2,-15:F2}", "WAT-on-Exams", " ", watOnExams);
+    }
+}
