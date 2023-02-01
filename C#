@@ -1,41 +1,46 @@
+/* 
+Programer: Y Ha
+Date: Winter 2023
+Purpose: The purpose of this program is to compute a weighted average of final grades for students in 1175, using the following weights: assignments (20%), midterm exam (30%), quizzes (20%), and final exam (30%)
+ */
+
 using System;
 
 class Program
 {
     static void Main()
     {
-        // Declare and initialize constants for the percentages of each component of the course
         const float ASSIGNMENTS_PERCENTAGE = 0.2f;
         const float MIDTERM_EXAM_PERCENTAGE = 0.3f;
         const float QUIZZES_PERCENTAGE = 0.2f;
         const float FINAL_EXAM_PERCENTAGE = 0.3f;
 
-        // Declare and initialize variables for the student's grades
-        float assignments = 89.5f;
-        float midtermExam = 70.5f;
-        float quiz1 = 80f;
-        float quiz2 = 85.5f;
-        float finalExam = 75f;
+        float assignments = 100; float midtermExam = 55; float quiz1 = 45.5f; float quiz2 = 100; float finalExam = 65.8f;
+        //float assignments = 90; float midtermExam = 65; float quiz1 = 60; float quiz2 = 75; float finalExam = 50;
+        //float assignments = 95; float midtermExam = 65; float quiz1 = 80; float quiz2 = 95; float finalExam = 60;
+        //float assignments = 80; float midtermExam = 86; float quiz1 = 90; float quiz2 = 95; float finalExam = 78;
+        //float assignments = 100; float midtermExam = 0; float quiz1 = 45.5f; float quiz2 = 100; float finalExam = 65.8f;
 
-        // Calculate the total weighted average
-        float totalWeightedAverage = (assignments * ASSIGNMENTS_PERCENTAGE) + (midtermExam * MIDTERM_EXAM_PERCENTAGE) + (quiz1 * QUIZZES_PERCENTAGE) + (quiz2 * QUIZZES_PERCENTAGE) + (finalExam * FINAL_EXAM_PERCENTAGE);
-        // Calculate the WAT-on-Exams
-        float watOnExams = (midtermExam * MIDTERM_EXAM_PERCENTAGE) + (finalExam * FINAL_EXAM_PERCENTAGE);
+        float totalWeightedAverage = (assignments * ASSIGNMENTS_PERCENTAGE) + (midtermExam * MIDTERM_EXAM_PERCENTAGE) + (quiz1 * QUIZZES_PERCENTAGE / 2) + (quiz2 * QUIZZES_PERCENTAGE / 2) + (finalExam * FINAL_EXAM_PERCENTAGE);
+        float watOnExams = (midtermExam * MIDTERM_EXAM_PERCENTAGE + (quiz1 + quiz2) * QUIZZES_PERCENTAGE / 2 + finalExam * FINAL_EXAM_PERCENTAGE)/ 0.8f;
 
-        // Display the results in a formatted table
-        Console.Write("\\***************************************\\\n");
-        Console.Write("\\\t\t\t\t\t\t\t\t\t\t\\\n");
+        Console.Write("\\***********************************************\\\n");
+        Console.Write("\\\t\t\t\t\t\t\\\n");
         Console.Write("\\\t\"Total Weighted Average Calculator\"\t\\\n");
-        Console.Write("\\\t\t\t\t\t\t\t\t\t\t\\\n");
-        Console.Write("\\***************************************\\\n\n");
-        Console.Write("\tAssessment\tPercentage\tYourGrade\n");
-        Console.Write("--------------\t----------\t---------\n");
-        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Assignments", ASSIGNMENTS_PERCENTAGE, assignments);
-        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Midterm Exam", MIDTERM_EXAM_PERCENTAGE, midtermExam);
-        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Quiz1", QUIZZES_PERCENTAGE/2, quiz1);
-        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Quiz2", QUIZZES_PERCENTAGE/2, quiz2);
+        Console.Write("\\\t\t\t\t\t\t\\\n");
+        Console.Write("\\***********************************************\\\n\n");
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Assessment", "Percentage", "Your Grade");
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "--------------", "-----------", "----------");
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Assginments", ASSIGNMENTS_PERCENTAGE, assignments);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "MidTerm Exam", MIDTERM_EXAM_PERCENTAGE, midtermExam);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Quiz1", QUIZZES_PERCENTAGE / 2, quiz1);
+        Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Quiz2", QUIZZES_PERCENTAGE / 2, quiz2);
         Console.WriteLine("{0,14}{1,13:P0} {2,-15}", "Final Exam", FINAL_EXAM_PERCENTAGE, finalExam);
-        Console.WriteLine("{0,14}{1,13} {2,-15:F2}", "Total", " ", totalWeightedAverage);
-        Console.WriteLine("{0,14}{1,13} {2,-15:F2}", "WAT-on-Exams", " ", watOnExams);
+        Console.WriteLine("-------------------------------------");
+        Console.WriteLine("{0,14}{1,13} {2,-15:F2}", "Weighted Total", "100%", totalWeightedAverage);
+        Console.WriteLine("\n");
+        Console.WriteLine("{0,14}{1,1} {2,-15:F2}", "The Weighted Average Total (WAT) on Exams (Midterm, Quizzes, Final exam) is","",watOnExams);
+        Console.WriteLine("If WAT-on-Exams is less than 50, the student fails the course.");
+        Console.ReadKey();
     }
 }
